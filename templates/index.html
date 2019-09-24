@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>订单校验</title>
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css"  />
+    <script src="../static/js/vue.js"></script>
+</head>
+<body>
+    <div id="box" class="box">
+        <form action="" enctype="multipart/form-data" method="POST">
+            <div id="upload" class="upload">
+                <input id="myfile" v-model="myfile" type='file' name="myfile"/>
+                <div id="upbox" class="uptext1 upbox"  v-if="myfile==''">
+                    <span>点击选择或拖拽文件进行上传</span>
+                </div>
+                <div class="uptext2 upbox"  v-else>
+                    <span>[[myfile.slice(12)]]</span>
+                </div>
+            </div>
+            <button class="btn" type="submit">确认提交</button>
+        </form>
+
+    </div>
+<script>
+    var upload = new Vue({
+        delimiters: ['[[', ']]'],// 修改vue自带的模板赋值方式,改为[[]]，主要为防止与后台引擎冲突
+        el:'#upload',
+        data:{
+            myfile:''
+        }
+    })
+</script>
+</body>
+</html>
